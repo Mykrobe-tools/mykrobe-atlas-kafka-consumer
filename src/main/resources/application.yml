@@ -1,0 +1,72 @@
+shared:
+  configuration:
+    schema.registry.url: ${SCHEMA_REGISTRY_URL}
+    bootstrap-servers: ${BROKER_URL}
+    brokers: ${BROKER_URL}
+spring:
+  kafka:
+    bootstrap-servers: ${BROKER_URL}
+    consumer:
+      bootstrap-servers: ${BROKER_URL}
+      group-id: mykrobe-streaming-insight
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.connect.json.JsonDeserializer
+    producer:
+      bootstrap-servers: ${BROKER_URL}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      schema.registry.url: ${SCHEMA_REGISTRY_URL}
+      specific.avro.reader: true
+    streams:
+      application-id: mykrobe-streamsery
+  cloud.stream:
+    bindings:
+      source_experiments:
+        destination: mykrobe.atlas.experiments
+        content-type: application/json
+      sink_core_experiments:
+        producer:
+          useNativeEncoding: true
+        destination: core_experiments
+        content-type: application/*+avro
+      sink_core_metadata_patients:
+        producer:
+          useNativeEncoding: true
+        destination: core_metadata_patients
+        content-type: application/*+avro
+  kafka.streams:
+    binder:
+      application-id: mykrobe-streams-pleasery
+      bootstrap-servers: ${BROKER_URL}
+      brokers: ${BROKER_URL}
+      configuration:
+        commit.interval.ms: 1000
+        schema.registry.url: ${SCHEMA_REGISTRY_URL}
+    bindings:
+      source_experiments:
+        consumer:
+          application-id: source-experiments
+          keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+      sink_core_experiments:
+        producer:
+          application-id: sink-core-experiments
+          configuration:
+            key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+          keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+          valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+      sink_core_metadata_patients:
+        producer:
+          application-id: sink-core-metadata-patients
+          configuration:
+            key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+          keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+          valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+  main.allow-bean-definition-overriding: true
+logging:
+  level:
+    root: INFO
+    org.apache.kafka.streams.KafkaStreams: DEBUG
