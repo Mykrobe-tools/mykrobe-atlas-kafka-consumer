@@ -2,6 +2,7 @@ package com.makeandship.mykrobe.listeners.experiment;
 
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.Predicate;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -15,10 +16,14 @@ import lombok.extern.slf4j.Slf4j;
 public class ExperimentStreamProcessor {
 	@SendTo({ ExperimentStreamBinding.SINK_CORE_EXPERIMENTS, ExperimentStreamBinding.SINK_CORE_METADATA_PATIENTS })
 	@StreamListener(ExperimentStreamBinding.SOURCE_EXPERIMENTS)
-	public KStream<Object, Object> processSourceExperiments(KStream<Object, Object> input) {
-		log.trace(ExperimentStreamProcessor.class.getName() + "#processSourceExperiments: enter");
+	public KStream<Object, Object>[] processSourceExperiments(KStream<Object, Object> input) {
+		// log.trace(ExperimentStreamProcessor.class.getName() +
+		// "#processSourceExperiments: enter");
 
-		return input.filter((key, value) -> true).map((key, value) -> buildRecord(value));
+		Predicate<Object, Object> isExperiment = (k, v) -> (v != null && v instanceof Object);
+
+		return input.filter((key, value) -> true).map((key, value) -> buildRecord(value)).branch(isExperiment,
+				isExperiment);
 	}
 
 	private KeyValue<Object, Object> buildRecord(Object message) {
