@@ -17,8 +17,7 @@ public class ExperimentStreamProcessor {
 	@SendTo({ ExperimentStreamBinding.SINK_CORE_EXPERIMENTS, ExperimentStreamBinding.SINK_CORE_METADATA_PATIENTS })
 	@StreamListener(ExperimentStreamBinding.SOURCE_EXPERIMENTS)
 	public KStream<Object, Object>[] processSourceExperiments(KStream<Object, Object> input) {
-		// log.trace(ExperimentStreamProcessor.class.getName() +
-		// "#processSourceExperiments: enter");
+		log.trace(ExperimentStreamProcessor.class.getName() +"#processSourceExperiments: enter");
 
 		Predicate<Object, Object> isExperiment = (k, v) -> (v != null && v instanceof Object);
 

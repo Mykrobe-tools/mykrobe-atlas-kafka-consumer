@@ -1,22 +1,22 @@
 shared:
   configuration:
-    schema.registry.url: ${SCHEMA_REGISTRY_URL}
-    bootstrap-servers: ${BROKER_URL}
-    brokers: ${BROKER_URL}
+    schema.registry.url: http://localhost:8081
+    bootstrap-servers: http://localhost:31090
+    brokers: http://localhost:31090
 spring:
   kafka:
-    bootstrap-servers: ${BROKER_URL}
+    bootstrap-servers: http://localhost:31090
     consumer:
-      bootstrap-servers: ${BROKER_URL}
+      bootstrap-servers: http://localhost:31090
       group-id: mykrobe-streaming-insight
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.connect.json.JsonDeserializer
     producer:
-      bootstrap-servers: ${BROKER_URL}
+      bootstrap-servers: http://localhost:31090
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-      schema.registry.url: ${SCHEMA_REGISTRY_URL}
+      schema.registry.url: http://localhost:31090
       specific.avro.reader: true
     streams:
       application-id: mykrobe-streamsery
@@ -42,7 +42,7 @@ spring:
       brokers: ${BROKER_URL}
       configuration:
         commit.interval.ms: 1000
-        schema.registry.url: ${SCHEMA_REGISTRY_URL}
+        schema.registry.url: http://localhost:8081
     bindings:
       source_experiments:
         consumer:
