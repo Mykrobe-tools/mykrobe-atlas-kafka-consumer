@@ -23,12 +23,20 @@ spring:
   cloud.stream:
     bindings:
       source_experiments:
-        destination: mykrobex.atlas.experiments
+        destination: mykrobe.atlas.experiments
+        content-type: application/json
+      source_predictor_result:
+        destination: mykrobe.atlas.experiments
         content-type: application/json
       sink_core_experiments:
         producer:
           useNativeEncoding: true
         destination: core_experiments
+        content-type: application/*+avro
+      sink_core_predictor_result:
+        producer:
+          useNativeEncoding: true
+        destination: core_predictor_result
         content-type: application/*+avro
     kafka.streams:
       binder:
@@ -44,9 +52,22 @@ spring:
             application-id: source-experiments
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_predictor_result:
+          consumer:
+            application-id: source-predictor-result
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
         sink_core_experiments:
           producer:
             application-id: sink-core-experiments
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_predictor_result:
+          producer:
+            application-id: sink-core-predictor-result
             configuration:
               key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
               value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer

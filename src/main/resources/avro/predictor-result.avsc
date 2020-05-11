@@ -1,0 +1,96 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "PredictorResult",
+  "fields": [
+    {
+      "type": "string",
+      "name": "experimentId"
+    },
+    {
+      "type": "string",
+      "name": "received"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "kmer"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "mykrobePredictorVersion"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "mykrobeAtlasVersion"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "genotypeModel"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "externalId"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "isoniazid"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "kanamycin"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "ethambutol"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "streptomycin"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "capreomycin"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "ciprofloxacin"
+    },
+    
+    {
+      "type": ["string", "null"],
+      "name": "moxifloxacin"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "ofloxacin"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "pyrazinamide"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "amikacin"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "rifampicin"
+    },
+    {
+      "type": ["boolean", "null"],
+      "name": "r"
+    },
+    {
+      "type": ["boolean", "null"],
+      "name": "mdr"
+    },
+    {
+      "type": ["boolean", "null"],
+      "name": "xdr"
+    },
+    {
+      "type": ["boolean", "null"],
+      "name": "tdr"
+    }
+  ]
+}

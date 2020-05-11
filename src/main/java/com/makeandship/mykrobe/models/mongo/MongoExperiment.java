@@ -1,8 +1,11 @@
 package com.makeandship.mykrobe.models.mongo;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.makeandship.mykrobe.models.ExperimentMetadata;
+import com.makeandship.mykrobe.models.ExperimentResult;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MongoExperiment {
@@ -18,6 +21,8 @@ public class MongoExperiment {
 	private String file;
 	@JsonProperty("metadata")
 	private ExperimentMetadata metadata;
+	@JsonProperty("results")
+	private List<ExperimentResult> results;
 
 	public MongoId getId() {
 		return id;
@@ -65,6 +70,14 @@ public class MongoExperiment {
 
 	public void setMetadata(ExperimentMetadata metadata) {
 		this.metadata = metadata;
+	}
+
+	public List<ExperimentResult> getResults() {
+		return results;
+	}
+
+	public void setResults(List<ExperimentResult> results) {
+		this.results = results;
 	}
 
 }

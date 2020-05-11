@@ -53,11 +53,11 @@
       "name": "patientCountryOfBirth"
     },
     {
-      "type": "int",
+      "type": [ "int", "null" ],
       "name": "patientAge"
     },
     {
-      "type": "double",
+      "type": [ "double", "null" ],
       "name": "patientBmi"
     },
     {
@@ -114,11 +114,11 @@
       "name": "sampleCityIsolate"
     },
     {
-      "type": "double",
+      "type": [ "double", "null" ],
       "name": "sampleLongitudeIsolate"
     },
     {
-      "type": "double",
+      "type": [ "double", "null" ],
       "name": "sampleLatitudeIsolate"
     },
     {
@@ -134,7 +134,7 @@
       "name": "sampleSmear"
     },
     {
-      "type": "int",
+      "type": [ "int", "null" ],
       "name": "deleted"
     }
   ]
