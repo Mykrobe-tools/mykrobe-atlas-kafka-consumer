@@ -1,0 +1,11 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "ExperimentKey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "id"
+    }
+  ]
+}

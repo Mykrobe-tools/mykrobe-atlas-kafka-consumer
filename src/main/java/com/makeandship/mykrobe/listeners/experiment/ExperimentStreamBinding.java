@@ -17,6 +17,6 @@ public interface ExperimentStreamBinding {
 	@Output(SINK_CORE_EXPERIMENTS)
 	KStream<?, ?> outputCoreExperiments();
 
-	@Output(SINK_CORE_METADATA_PATIENTS)
-	KStream<?, ?> outputCoreMetadataPatients();
+	//@Output(SINK_CORE_METADATA_PATIENTS)
+	//KStream<?, ?> outputCoreMetadataPatients();
 }

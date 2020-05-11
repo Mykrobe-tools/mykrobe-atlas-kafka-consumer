@@ -14,14 +14,14 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.7.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<properties>
 		<!-- https://maven.apache.org/general.html#encoding-warning -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		
+
 		<avro.version>1.9.0</avro.version>
 		<oleaster.version>0.2.0</oleaster.version>
 		<junit.version>4.8.2</junit.version>
@@ -30,9 +30,8 @@
 		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 	</properties>
 	<build>
-	<pluginManagement>
 		<plugins>
-			<!--  run appliation using spring boot -->
+			<!-- run appliation using spring boot -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -58,7 +57,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--  discover generated source -->
+			<!-- discover generated source -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -78,7 +77,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		</pluginManagement>
 	</build>
 	<repositories>
 		<repository>
@@ -99,16 +97,16 @@
 		</dependency>
 		<!-- spring / kafka streaming -->
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-stream-binder-kafka-streams</artifactId>
-		</dependency>		 
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-binder-kafka-streams</artifactId>
+		</dependency>
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-stream-binder-kafka</artifactId>
-		</dependency>		 
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-binder-kafka</artifactId>
+		</dependency>
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-stream-schema</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-schema</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -120,13 +118,13 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--  jasmine like tests -->
+		<!-- jasmine like tests -->
 		<dependency>
 			<groupId>com.mscharhag.oleaster</groupId>
 			<artifactId>oleaster-matcher</artifactId>
 			<version>${oleaster.version}</version>
-    	</dependency>
-    	<dependency>
+		</dependency>
+		<dependency>
 			<groupId>com.mscharhag.oleaster</groupId>
 			<artifactId>oleaster-runner</artifactId>
 			<version>${oleaster.version}</version>
@@ -137,9 +135,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>com.xk72</groupId>
-		    <artifactId>pherialize</artifactId>
-		    <version>${pherialize.version}</version>
+			<groupId>com.xk72</groupId>
+			<artifactId>pherialize</artifactId>
+			<version>${pherialize.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -188,35 +186,40 @@
 			<version>${confluent.version}</version>
 		</dependency>
 		<dependency>
-	        <groupId>org.apache.avro</groupId>
-	        <artifactId>avro</artifactId>
-	        <version>${avro.version}</version>
-	    </dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>${avro.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
 		<dependency>
-		    <groupId>commons-beanutils</groupId>
-		    <artifactId>commons-beanutils</artifactId>
-		    <version>1.9.3</version>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
 		</dependency>
 	</dependencies>
-	
+
 	<dependencyManagement>
-        <dependencies>
-            <dependency>
+		<dependencies>
+			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-    </dependencies>
+		</dependencies>
 	</dependencyManagement>
 </project>

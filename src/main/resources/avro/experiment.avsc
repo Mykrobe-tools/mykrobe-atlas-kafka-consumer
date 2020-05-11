@@ -1,0 +1,141 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "Experiment",
+  "fields": [
+    {
+      "type": "string",
+      "name": "id"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "file"
+    },
+    {
+      "type": "string",
+      "name": "created"
+    },
+    {
+      "type": "string",
+      "name": "modified"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "outcomeSputumSmearConversion"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "outcomeSputumCultureConversion"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "outcomeWhoOutcomeCategory"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "outcomeDateOfDeath"
+    },
+    
+    {
+      "type": [ "string", "null" ],
+      "name": "patientId"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientSiteId"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientGenderAtBirth"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientCountryOfBirth"
+    },
+    {
+      "type": "int",
+      "name": "patientAge"
+    },
+    {
+      "type": "double",
+      "name": "patientBmi"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientInjectingDrugUse"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientHomeless"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientImprisoned"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientSmoker"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientDiabetic"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientHivStatus"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "patientArt"
+    },
+    
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleLabId"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleIsolateId"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleCollectionDate"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleProspectiveIsolate"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleCountryIsolate"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleCityIsolate"
+    },
+    {
+      "type": "double",
+      "name": "sampleLongitudeIsolate"
+    },
+    {
+      "type": "double",
+      "name": "sampleLatitudeIsolate"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleDateArrived"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleAnatomicalOrigin"
+    },
+    {
+      "type": [ "string", "null" ],
+      "name": "sampleSmear"
+    },
+    {
+      "type": "int",
+      "name": "deleted"
+    }
+  ]
+}
