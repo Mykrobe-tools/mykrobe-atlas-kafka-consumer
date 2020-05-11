@@ -9,14 +9,10 @@ import com.makeandship.mykrobe.Constants;
 public interface ExperimentStreamBinding {
 	String SOURCE_EXPERIMENTS = Constants.SOURCE_EXPERIMENTS;
 	String SINK_CORE_EXPERIMENTS = Constants.SINK_CORE_EXPERIMENTS;
-	String SINK_CORE_METADATA_PATIENTS = Constants.SINK_CORE_METADATA_PATIENTS;
 
 	@Input(SOURCE_EXPERIMENTS)
 	KStream<?, ?> inputExperiments();
 
 	@Output(SINK_CORE_EXPERIMENTS)
 	KStream<?, ?> outputCoreExperiments();
-
-	//@Output(SINK_CORE_METADATA_PATIENTS)
-	//KStream<?, ?> outputCoreMetadataPatients();
 }
