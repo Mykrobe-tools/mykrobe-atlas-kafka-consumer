@@ -28,6 +28,12 @@ spring:
       source_predictor_result:
         destination: mykrobe.atlas.experiments
         content-type: application/json
+      source_distance_result:
+        destination: mykrobe.atlas.experiments
+        content-type: application/json
+      source_predictor_result_file:
+        destination: mykrobe.atlas.experiments
+        content-type: application/json
       sink_core_experiments:
         producer:
           useNativeEncoding: true
@@ -37,6 +43,21 @@ spring:
         producer:
           useNativeEncoding: true
         destination: core_predictor_result
+        content-type: application/*+avro
+      sink_core_tree_distance_result:
+        producer:
+          useNativeEncoding: true
+        destination: core_tree_distance_result
+        content-type: application/*+avro
+      sink_core_nearest_neighbour_result:
+        producer:
+          useNativeEncoding: true
+        destination: core_nearest_neighbour_result
+        content-type: application/*+avro
+      sink_core_predictor_result_file:
+        producer:
+          useNativeEncoding: true
+        destination: core_predictor_result_file
         content-type: application/*+avro
     kafka.streams:
       binder:
@@ -57,6 +78,16 @@ spring:
             application-id: source-predictor-result
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_distance_result:
+          consumer:
+            application-id: source-distance-result
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_predictor_result_file:
+          consumer:
+            application-id: source-predictor-result-file
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
         sink_core_experiments:
           producer:
             application-id: sink-core-experiments
@@ -68,6 +99,30 @@ spring:
         sink_core_predictor_result:
           producer:
             application-id: sink-core-predictor-result
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_tree_distance_result:
+          producer:
+            application-id: sink-core-tree-distance-result
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_nearest_neighbour_result:
+          producer:
+            application-id: sink-core-nearest-neighbour-result
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_predictor_result_file:
+          producer:
+            application-id: sink-core-predictor-result-file
             configuration:
               key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
               value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer

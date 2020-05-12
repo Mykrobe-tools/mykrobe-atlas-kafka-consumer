@@ -10,6 +10,8 @@ import com.makeandship.mykrobe.models.mongo.MongoDate;
 public class ExperimentResult {
 	@JsonProperty("type")
 	private String type;
+	@JsonProperty("subType")
+	private String subType;
 	@JsonProperty("received")
 	private MongoDate received;
 	@JsonProperty("kmer")
@@ -127,5 +129,13 @@ public class ExperimentResult {
 
 	public void setSusceptibility(List<MykrobeSusceptibility> susceptibility) {
 		this.susceptibility = susceptibility;
+	}
+
+	public String getSubType() {
+		return subType;
+	}
+
+	public void setSubType(String subType) {
+		this.subType = subType;
 	}
 }

@@ -1,0 +1,23 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "PredictorResultFile",
+  "fields": [
+    {
+      "type": "string",
+      "name": "experimentId"
+    },
+    {
+      "type": "string",
+      "name": "received"
+    },
+    {
+      "type": "int",
+      "name": "index"
+    },
+    {
+      "type": "string",
+      "name": "filename"
+    }
+  ]
+}
