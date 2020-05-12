@@ -23,7 +23,7 @@ public class Constants {
 	public static final String STORE_CORE_PREDICTOR_RESULT_FILE = "core-predictor-result-file-store";
 
 	// schema registry
-	public static final String SCHEMA_REGISTRY_URL = "http://localhost:8081";
+	public static final String SCHEMA_REGISTRY_URL = System.getenv("SCHEMA_REGISTRY_URL");
 
 	// dates formats
 	public static final String MYSQL_DATE_FORMAT = "yyyy-MM-dd";
