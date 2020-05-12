@@ -3,6 +3,7 @@ package com.makeandship.mykrobe.converters;
 import java.util.List;
 
 import com.makeandship.mykrobe.Constants;
+import com.makeandship.mykrobe.models.DistanceResult;
 import com.makeandship.mykrobe.models.ExperimentResult;
 import com.makeandship.mykrobe.models.MykrobeSusceptibility;
 import com.makeandship.mykrobe.models.PredictorResult;
@@ -57,6 +58,15 @@ public class ResultConverter {
 		predictor.setTdr(result.isTdr());
 
 		return predictor;
+	}
+
+	public static DistanceResult toDistanceResult(String oid, ExperimentResult result) {
+		DistanceResult distance = new DistanceResult();
+		distance.setExperimentId(oid);
+		distance.setReceived(DateConverter.dateToMysql(result.getReceived().getDate()));
+		distance.setSubType(result.getSubType());
+		distance.setType(result.getType());
+		return distance;
 	}
 
 }

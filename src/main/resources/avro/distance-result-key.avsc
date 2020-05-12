@@ -1,0 +1,19 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "DistanceResultKey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "experimentId"
+    },
+    {
+      "type": "string",
+      "name": "received"
+    },
+    {
+      "type": "string",
+      "name": "subType"
+    }
+  ]
+}

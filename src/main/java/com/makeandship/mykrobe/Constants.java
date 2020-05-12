@@ -6,14 +6,21 @@ public class Constants {
 	// sources
 	public static final String SOURCE_EXPERIMENTS = "source_experiments";
 	public static final String SOURCE_PREDICTOR_RESULT = "source_predictor_result";
+	public static final String SOURCE_DISTANCE_RESULT = "source_distance_result";
+	public static final String SOURCE_PREDICTOR_RESULT_FILE = "source_predictor_result_file";
 
 	// sinks
 	public static final String SINK_CORE_EXPERIMENTS = "sink_core_experiments";
 	public static final String SINK_CORE_PREDICTOR_RESULT = "sink_core_predictor_result";
+	public static final String SINK_CORE_TREE_DISTANCE_RESULT = "sink_core_tree_distance_result";
+	public static final String SINK_CORE_NEAREST_NEIGHBOUR_RESULT = "sink_core_nearest_neighbour_result";
+	public static final String SINK_CORE_PREDICTOR_RESULT_FILE = "sink_core_predictor_result_file";
 
 	// stores
 	public static final String STORE_CORE_EXPERIMENT = "core-experiment-store";
 	public static final String STORE_CORE_PREDICTOR_RESULT = "core-predictor-result-store";
+	public static final String STORE_CORE_DISTANCE_RESULT = "core-distance-result-store";
+	public static final String STORE_CORE_PREDICTOR_RESULT_FILE = "core-predictor-result-file-store";
 
 	// schema registry
 	public static final String SCHEMA_REGISTRY_URL = "http://localhost:8081";
