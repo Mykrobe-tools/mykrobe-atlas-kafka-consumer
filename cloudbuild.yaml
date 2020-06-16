@@ -1,10 +1,4 @@
 steps:
-  - name: gcr.io/cloud-builders/git
-    entrypoint: "bash"
-    args: ["build", "-t", "$_IMAGE_REPOSITORY:$_BUILD_VERSION", "-f", "Dockerfile", "."]
-  - name: gcr.io/cloud-builders/git
-    entrypoint: "bash"
-    args: ["push", "$_IMAGE_REPOSITORY:$_BUILD_VERSION"]
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "$_IMAGE_REPOSITORY:$_BUILD_VERSION", "-f", "Dockerfile", "."]
   - name: "gcr.io/cloud-builders/docker"
