@@ -131,4 +131,5 @@ select
     e.outcomeWhoOutcomeCategory  as outcome_who_category_outcome,
     e.outcomeDateOfDeath as outcome_date_of_death
 from core_experiments e, core_predictor_result r
+where r.experiment_id = e.id
 where deleted IS NULL;
