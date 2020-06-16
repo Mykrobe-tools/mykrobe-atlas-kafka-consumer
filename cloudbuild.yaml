@@ -1,0 +1,15 @@
+steps:
+  - name: gcr.io/cloud-builders/git
+    entrypoint: "bash"
+    args: ["build", "-t", "$_IMAGE_REPOSITORY:$_BUILD_VERSION", "-f", "Dockerfile", "."]
+  - name: gcr.io/cloud-builders/git
+    entrypoint: "bash"
+    args: ["push", "$_IMAGE_REPOSITORY:$_BUILD_VERSION"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "$_IMAGE_REPOSITORY:$_BUILD_VERSION", "-f", "Dockerfile", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "$_IMAGE_REPOSITORY:$_BUILD_VERSION"]
+substitutions:
+  _MAVEN_VERSION: 3-jdk-8
+  _IMAGE_REPOSITORY: eu.gcr.io/atlas-275810/mykrobe-atlas-kafka-consumer
+  _BUILD_VERSION: v0.0.1-RC1
