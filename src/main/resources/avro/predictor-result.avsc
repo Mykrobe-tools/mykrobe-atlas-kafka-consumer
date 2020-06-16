@@ -77,6 +77,54 @@
       "name": "rifampicin"
     },
     {
+      "type": ["string", "null"],
+      "name": "phyloGroup"
+    },
+    {
+      "type": ["float", "null"],
+      "name": "phyloGroupPercentCoverage"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "phyloGroupMedianDepth"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "subComplex"
+    },
+    {
+      "type": ["float", "null"],
+      "name": "subComplexPercentCoverage"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "subComplexMedianDepth"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "species"
+    },
+    {
+      "type": ["float", "null"],
+      "name": "speciesPercentCoverage"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "speciesMedianDepth"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "lineage"
+    },
+    {
+      "type": ["float", "null"],
+      "name": "lineagePercentCoverage"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "lineageMedianDepth"
+    },
+    {
       "type": ["boolean", "null"],
       "name": "r"
     },

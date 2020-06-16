@@ -5,6 +5,7 @@ import java.util.List;
 import com.makeandship.mykrobe.Constants;
 import com.makeandship.mykrobe.models.DistanceResult;
 import com.makeandship.mykrobe.models.ExperimentResult;
+import com.makeandship.mykrobe.models.MykrobePhylogenetics;
 import com.makeandship.mykrobe.models.MykrobeSusceptibility;
 import com.makeandship.mykrobe.models.PredictorResult;
 
@@ -27,28 +28,71 @@ public class ResultConverter {
 				switch (susceptibility.getName()) {
 				case Constants.ISONIAZID:
 					predictor.setIsoniazid(susceptibility.getPrediction());
+					break;
 				case Constants.KANAMYCIN:
 					predictor.setKanamycin(susceptibility.getPrediction());
+					break;
 				case Constants.ETHAMBUTOL:
 					predictor.setEthambutol(susceptibility.getPrediction());
+					break;
 				case Constants.STREPTOMYCIN:
 					predictor.setStreptomycin(susceptibility.getPrediction());
+					break;
 				case Constants.CAPREOMYCIN:
 					predictor.setCapreomycin(susceptibility.getPrediction());
+					break;
 				case Constants.CIPROFLOXACIN:
 					predictor.setCiprofloxacin(susceptibility.getPrediction());
+					break;
 				case Constants.MOXIFLOXACIN:
 					predictor.setMoxifloxacin(susceptibility.getPrediction());
+					break;
 				case Constants.OFLOXACIN:
 					predictor.setOfloxacin(susceptibility.getPrediction());
+					break;
 				case Constants.AMIKACIN:
 					predictor.setAmikacin(susceptibility.getPrediction());
+					break;
 				case Constants.PYRAZINAMIDE:
 					predictor.setPyrazinamide(susceptibility.getPrediction());
+					break;
 				case Constants.RIFAMPICIN:
 					predictor.setRifampicin(susceptibility.getPrediction());
+					break;
 				}
 
+			}
+		}
+		
+		List<MykrobePhylogenetics> phylogeneticsList = result.getPhylogenetics();
+		if (phylogeneticsList != null) {
+			for (MykrobePhylogenetics phylogenetics : phylogeneticsList) {
+				String phylogeneticsResult = phylogenetics.getResult();
+				float phylogeneticsPercentCoverage = phylogenetics.getPercentCoverage();
+				int phylogeneticsMedianDepth = phylogenetics.getMedianDepth();
+			
+				switch (phylogenetics.getType()) {
+				case Constants.PHYLO_GROUP:
+					predictor.setPhyloGroup(phylogeneticsResult);
+					predictor.setPhyloGroupPercentCoverage(phylogeneticsPercentCoverage);
+					predictor.setPhyloGroupMedianDepth(phylogeneticsMedianDepth);
+					break;
+				case Constants.SUB_COMPLEX: 
+					predictor.setSubComplex(phylogeneticsResult);
+					predictor.setSubComplexPercentCoverage(phylogeneticsPercentCoverage);
+					predictor.setSubComplexMedianDepth(phylogeneticsMedianDepth);
+					break;
+				case Constants.SPECIES:
+					predictor.setSpecies(phylogeneticsResult);
+					predictor.setSpeciesPercentCoverage(phylogeneticsPercentCoverage);
+					predictor.setSpeciesMedianDepth(phylogeneticsMedianDepth);
+					break;
+				case Constants.LINEAGE:
+					predictor.setLineage(phylogeneticsResult);
+					predictor.setLineagePercentCoverage(phylogeneticsPercentCoverage);
+					predictor.setLineageMedianDepth(phylogeneticsMedianDepth);
+					break;
+				}
 			}
 		}
 

@@ -34,6 +34,8 @@ public class ExperimentResult {
 	private boolean tdr;
 	@JsonProperty("susceptibility")
 	private List<MykrobeSusceptibility> susceptibility;
+	@JsonProperty("phylogenetics")
+	private List<MykrobePhylogenetics> phylogenetics;
 
 	public String getType() {
 		return type;
@@ -129,6 +131,14 @@ public class ExperimentResult {
 
 	public void setSusceptibility(List<MykrobeSusceptibility> susceptibility) {
 		this.susceptibility = susceptibility;
+	}
+	
+	public List<MykrobePhylogenetics> getPhylogenetics() {
+		return phylogenetics;
+	}
+
+	public void setPhylogenetics(List<MykrobePhylogenetics> phylogenetics) {
+		this.phylogenetics = phylogenetics;
 	}
 
 	public String getSubType() {

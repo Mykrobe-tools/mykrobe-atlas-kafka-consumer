@@ -48,5 +48,11 @@ public class Constants {
 	public static final String PYRAZINAMIDE = "Pyrazinamide";
 	public static final String AMIKACIN = "Amikacin";
 	public static final String RIFAMPICIN = "Rifampicin";
+	
+	// phylogenetics types
+	public static final String PHYLO_GROUP = "phylo_group";
+	public static final String SUB_COMPLEX = "sub_complex";
+	public static final String SPECIES = "species";
+	public static final String LINEAGE = "lineage";
 
 }
