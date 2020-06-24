@@ -95,6 +95,18 @@ select
     r.pyrazinamide,
     r.amikacin,
     r.rifampicin,
+    r.phyloGroup as phylo_group,
+  	r.phyloGroupPercentCoverage as phylo_group_percent_coverage,
+  	r.phyloGroupMedianDepth as phylo_group_median_depth,
+	r.subComplex as sub_complex,
+	r.subComplexPercentCoverage as sub_complex_percent_coverage,
+	r.subComplexMedianDepth as sub_complex_median_depth,
+	r.species as species,
+	r.speciesPercentCoverage as species_percent_coverage,
+	r.speciesMedianDepth as species_median_depth,
+	r.lineage as lineage,
+	r.lineagePercentCoverage as lineage_percent_coverage,
+	r.lineageMedianDepth as lineage_median_depth,
     r.r,
     r.mdr,
     r.xdr,
@@ -131,5 +143,5 @@ select
     e.outcomeWhoOutcomeCategory  as outcome_who_category_outcome,
     e.outcomeDateOfDeath as outcome_date_of_death
 from core_experiments e, core_predictor_result r
-where r.experiment_id = e.id
-where deleted IS NULL;
+where r.experimentId = e.id
+AND deleted IS NULL;
