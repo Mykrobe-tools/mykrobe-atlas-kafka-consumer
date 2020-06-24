@@ -12,11 +12,11 @@
       "name": "file"
     },
     {
-      "type": "string",
+      "type": ["string", "null" ],
       "name": "created"
     },
     {
-      "type": "string",
+      "type": ["string", "null" ],
       "name": "modified"
     },
     {

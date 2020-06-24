@@ -6,4 +6,4 @@ steps:
 substitutions:
   _MAVEN_VERSION: 3-jdk-8
   _IMAGE_REPOSITORY: eu.gcr.io/atlas-275810/mykrobe-atlas-kafka-consumer
-  _BUILD_VERSION: v0.0.1
+  _BUILD_VERSION: v0.0.2
