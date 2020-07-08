@@ -133,3 +133,4 @@ logging:
   level:
     root: INFO
     org.apache.kafka.streams.KafkaStreams: DEBUG
+    com.makeandship.mykrobe: DEBUG
