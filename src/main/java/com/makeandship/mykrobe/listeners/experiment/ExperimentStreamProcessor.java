@@ -111,7 +111,7 @@ public class ExperimentStreamProcessor {
 					
 					DebeziumExperimentPayload payload = value.getPayload();
 					ExperimentTransformer transformer = ExperimentTransformersFactory.create(stateStore, payload);
-
+  
 					if (transformer != null) {
 						log.debug(ExperimentTransformSupplier.class.getName() + "#transform: call transform");
 						return transformer.transform();
