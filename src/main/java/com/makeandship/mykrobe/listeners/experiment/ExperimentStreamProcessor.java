@@ -53,7 +53,7 @@ public class ExperimentStreamProcessor {
 	@SendTo(ExperimentStreamBinding.SINK_CORE_EXPERIMENTS)
 	@StreamListener(ExperimentStreamBinding.SOURCE_EXPERIMENTS)
 	public KStream<ExperimentKey, Experiment> processCoreExperiments(KStream<Object, DebeziumExperiment> stream) {
-		log.info(ExperimentStreamProcessor.class.getName() + "#process: enter");
+		log.debug(ExperimentStreamProcessor.class.getName() + "#processCoreExperiments: enter");
 
 		try {
 			initializeStateStore();
@@ -66,6 +66,7 @@ public class ExperimentStreamProcessor {
 	}
 
 	private StoreBuilder<KeyValueStore<ExperimentKey, Experiment>> buildExperimentStore() {
+		log.debug(ExperimentStreamProcessor.class.getName() + "#buildExperimentStore: enter");
 		final Map<String, String> serdeConfig = Collections
 				.singletonMap(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, Constants.SCHEMA_REGISTRY_URL);
 
@@ -75,6 +76,8 @@ public class ExperimentStreamProcessor {
 		keyAvroSerde.configure(serdeConfig, true);
 		valueAvroSerde.configure(serdeConfig, false);
 
+		log.debug(ExperimentStreamProcessor.class.getName() + "#buildExperimentStore: exit");
+		
 		return Stores.keyValueStoreBuilder(Stores.persistentKeyValueStore(Constants.STORE_CORE_EXPERIMENT),
 				keyAvroSerde, valueAvroSerde);
 	}
@@ -104,13 +107,18 @@ public class ExperimentStreamProcessor {
 
 				@Override
 				public KeyValue<ExperimentKey, Experiment> transform(Object key, DebeziumExperiment value) {
+					log.debug(ExperimentTransformSupplier.class.getName() + "#transform: enter");
+					
 					DebeziumExperimentPayload payload = value.getPayload();
 					ExperimentTransformer transformer = ExperimentTransformersFactory.create(stateStore, payload);
 
 					if (transformer != null) {
+						log.debug(ExperimentTransformSupplier.class.getName() + "#transform: call transform");
 						return transformer.transform();
 					}
 
+					log.debug(ExperimentTransformSupplier.class.getName() + "#transform: exit (null)");
+					
 					return null;
 				}
 
