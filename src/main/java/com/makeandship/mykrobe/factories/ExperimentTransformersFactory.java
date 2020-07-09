@@ -10,6 +10,9 @@ import com.makeandship.mykrobe.transformers.DeleteExperimentTransformer;
 import com.makeandship.mykrobe.transformers.ExperimentTransformer;
 import com.makeandship.mykrobe.transformers.UpdateExperimentTransformer;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ExperimentTransformersFactory {
 	public static final String CREATE = "c";
 	public static final String UPDATE = "u";
@@ -19,10 +22,13 @@ public class ExperimentTransformersFactory {
 			DebeziumExperimentPayload payload) {
 		switch (payload.getOp()) {
 		case "c":
+			log.debug("Using CreateExperimentTransformer");
 			return new CreateExperimentTransformer(stateStore, payload);
 		case "u":
+			log.debug("Using UpdateExperimentTransformer");
 			return new UpdateExperimentTransformer(stateStore, payload);
 		case "d":
+			log.debug("Using DeleteExperimentTransformer");
 			return new DeleteExperimentTransformer(stateStore, payload);
 		default:
 			return null;
