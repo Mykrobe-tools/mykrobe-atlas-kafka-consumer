@@ -19,7 +19,7 @@ spring:
       schema.registry.url: ${SCHEMA_REGISTRY_URL}
       specific.avro.reader: true
     streams:
-      application-id: mykrobe-pipeline-v1.0.0
+      application-id: mykrobe-pipeline-v1.0.1
   cloud.stream:
     bindings:
       source_experiments:
