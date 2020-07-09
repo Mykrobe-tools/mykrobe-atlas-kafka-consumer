@@ -13,6 +13,9 @@ import com.makeandship.mykrobe.models.metadata.MetadataPatient;
 import com.makeandship.mykrobe.models.metadata.MetadataSample;
 import com.makeandship.mykrobe.models.mongo.MongoExperiment;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public abstract class ExperimentTransformer {
 	protected KeyValueStore<ExperimentKey, Experiment> stateStore;
 	protected DebeziumExperimentPayload payload;
@@ -24,6 +27,7 @@ public abstract class ExperimentTransformer {
 	}
 
 	protected void buildExperiment(Experiment experiment, String id, MongoExperiment mongoExperiment) {
+		log.debug(ExperimentTransformer.class.getName() + "#buildExperiment: enter");
 		experiment.setId(id);
 		experiment.setFile(mongoExperiment.getFile());
 		if (mongoExperiment.getCreated() != null) {
@@ -38,6 +42,8 @@ public abstract class ExperimentTransformer {
 		if (mongoExperiment.getMetadata() != null) {
 			ExperimentMetadata metadata = mongoExperiment.getMetadata();
 			if (metadata.getOutcome() != null) {
+				log.debug(ExperimentTransformer.class.getName() + "#buildExperiment: Outcome metadata");
+				
 				MetadataOutcome outcome = metadata.getOutcome();
 				if (outcome.getDateOfDeath() != null) {
 					experiment.setOutcomeDateOfDeath(DateConverter.dateToMysql(outcome.getDateOfDeath().getDate()));
@@ -48,6 +54,8 @@ public abstract class ExperimentTransformer {
 			}
 
 			if (metadata.getPatient() != null) {
+				log.debug(ExperimentTransformer.class.getName() + "#buildExperiment: Patient metadata");
+				
 				MetadataPatient patient = metadata.getPatient();
 				experiment.setPatientAge(patient.getAge());
 				experiment.setPatientArt(patient.getArt());
@@ -65,6 +73,8 @@ public abstract class ExperimentTransformer {
 			}
 
 			if (metadata.getSample() != null) {
+				log.debug(ExperimentTransformer.class.getName() + "#buildExperiment: Sample metadata");
+				
 				MetadataSample sample = metadata.getSample();
 				experiment.setSampleAnatomicalOrigin(sample.getAnatomicalOrigin());
 				experiment.setSampleCityIsolate(sample.getCityIsolate());
@@ -83,6 +93,8 @@ public abstract class ExperimentTransformer {
 				experiment.setSampleSmear(sample.getSmear());
 			}
 		}
+		
+		log.debug(ExperimentTransformer.class.getName() + "#buildExperiment: exit");
 	}
 
 	public abstract KeyValue<ExperimentKey, Experiment> transform();
