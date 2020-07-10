@@ -8,7 +8,7 @@ spring:
     bootstrap-servers: ${BROKER_URL}
     consumer:
       bootstrap-servers: ${BROKER_URL}
-      group-id: mykrobe-pipeline-consumer-group-v1.0.2-RC3
+      group-id: mykrobe-pipeline-consumer-group-v0.0.7
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.connect.json.JsonDeserializer
@@ -19,7 +19,7 @@ spring:
       schema.registry.url: ${SCHEMA_REGISTRY_URL}
       specific.avro.reader: true
     streams:
-      application-id: mykrobe-pipeline-streams-v1.0.2-RC3
+      application-id: mykrobe-pipeline-streams-v0.0.7
   cloud.stream:
     bindings:
       source_experiments:
@@ -61,7 +61,7 @@ spring:
         content-type: application/*+avro
     kafka.streams:
       binder:
-        application-id: mykrobe-pipeline-binder-v1.0.2-RC3
+        application-id: mykrobe-pipeline-binder-v0.0.7
         bootstrap-servers: ${BROKER_URL}
         brokers: ${BROKER_URL}
         configuration:
