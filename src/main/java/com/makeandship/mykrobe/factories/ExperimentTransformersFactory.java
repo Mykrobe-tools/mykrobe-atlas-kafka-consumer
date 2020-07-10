@@ -15,20 +15,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExperimentTransformersFactory {
 	public static final String CREATE = "c";
+	public static final String READ   = "r";
 	public static final String UPDATE = "u";
 	public static final String DELETE = "d";
 	
 	public static ExperimentTransformer create(KeyValueStore<ExperimentKey, Experiment> stateStore,
 			DebeziumExperimentPayload payload) {
 		switch (payload.getOp()) {
-		case "c":
-			log.debug("Using CreateExperimentTransformer");
+		case ExperimentTransformersFactory.CREATE:
+			log.debug("Using CreateExperimentTransformer(c)");
 			return new CreateExperimentTransformer(stateStore, payload);
-		case "u":
-			log.debug("Using UpdateExperimentTransformer");
+		case ExperimentTransformersFactory.READ:
+			log.debug("Using CreateExperimentTransformer (r)");
+			return new CreateExperimentTransformer(stateStore, payload);
+		case ExperimentTransformersFactory.UPDATE:
+			log.debug("Using UpdateExperimentTransformer (u)");
 			return new UpdateExperimentTransformer(stateStore, payload);
-		case "d":
-			log.debug("Using DeleteExperimentTransformer");
+		case ExperimentTransformersFactory.DELETE:
+			log.debug("Using DeleteExperimentTransformer (d)");
 			return new DeleteExperimentTransformer(stateStore, payload);
 		default:
 			return null;
