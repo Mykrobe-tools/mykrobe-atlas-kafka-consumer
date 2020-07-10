@@ -16,7 +16,7 @@
       "name": "index"
     },
     {
-      "type": "string",
+      "type": ["string", "null"],
       "name": "filename"
     }
   ]
