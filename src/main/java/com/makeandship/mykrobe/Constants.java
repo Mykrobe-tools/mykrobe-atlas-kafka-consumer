@@ -8,6 +8,8 @@ public class Constants {
 	public static final String SOURCE_PREDICTOR_RESULT = "source_predictor_result";
 	public static final String SOURCE_DISTANCE_RESULT = "source_distance_result";
 	public static final String SOURCE_PREDICTOR_RESULT_FILE = "source_predictor_result_file";
+	public static final String SOURCE_GROUPS = "source_groups";
+	public static final String SOURCE_GROUP_EXPERIMENTS = "source_group_experiments";
 
 	// sinks
 	public static final String SINK_CORE_EXPERIMENTS = "sink_core_experiments";
@@ -15,12 +17,16 @@ public class Constants {
 	public static final String SINK_CORE_TREE_DISTANCE_RESULT = "sink_core_tree_distance_result";
 	public static final String SINK_CORE_NEAREST_NEIGHBOUR_RESULT = "sink_core_nearest_neighbour_result";
 	public static final String SINK_CORE_PREDICTOR_RESULT_FILE = "sink_core_predictor_result_file";
+	public static final String SINK_CORE_GROUPS = "sink_core_groups";
+	public static final String SINK_CORE_GROUP_EXPERIMENTS = "sink_core_group_experiments";
 
 	// stores
 	public static final String STORE_CORE_EXPERIMENT = "core-experiment-store";
 	public static final String STORE_CORE_PREDICTOR_RESULT = "core-predictor-result-store";
 	public static final String STORE_CORE_DISTANCE_RESULT = "core-distance-result-store";
 	public static final String STORE_CORE_PREDICTOR_RESULT_FILE = "core-predictor-result-file-store";
+	public static final String STORE_CORE_GROUP = "core-group-store";
+	public static final String STORE_CORE_GROUP_EXPERIMENT = "core-group-experiment-store";
 
 	// schema registry
 	public static final String SCHEMA_REGISTRY_URL = System.getenv("SCHEMA_REGISTRY_URL");
@@ -48,7 +54,7 @@ public class Constants {
 	public static final String PYRAZINAMIDE = "Pyrazinamide";
 	public static final String AMIKACIN = "Amikacin";
 	public static final String RIFAMPICIN = "Rifampicin";
-	
+
 	// phylogenetics types
 	public static final String PHYLO_GROUP = "phylo_group";
 	public static final String SUB_COMPLEX = "sub_complex";

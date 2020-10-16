@@ -34,6 +34,12 @@ spring:
       source_predictor_result_file:
         destination: mykrobe.atlas.experiments
         content-type: application/json
+      source_groups:
+        destination: mykrobe.atlas.groups
+        content-type: application/json
+      source_group_experiments:
+        destination: mykrobe.atlas.groups
+        content-type: application/json
       sink_core_experiments:
         producer:
           useNativeEncoding: true
@@ -58,6 +64,16 @@ spring:
         producer:
           useNativeEncoding: true
         destination: core_predictor_result_file
+        content-type: application/*+avro
+      sink_core_groups:
+        producer:
+          useNativeEncoding: true
+        destination: core_groups
+        content-type: application/*+avro
+      sink_core_group_experiments:
+        producer:
+          useNativeEncoding: true
+        destination: core_group_experiments
         content-type: application/*+avro
     kafka.streams:
       binder:
@@ -86,6 +102,16 @@ spring:
         source_predictor_result_file:
           consumer:
             application-id: source-predictor-result-file
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_groups:
+          consumer:
+            application-id: source-groups
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_group_experiments:
+          consumer:
+            application-id: source-group-experiments
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.springframework.kafka.support.serializer.JsonSerde
         sink_core_experiments:
@@ -128,9 +154,25 @@ spring:
               value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
             keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
             valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_groups:
+          producer:
+            application-id: sink-core-groups
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_group_experiments:
+          producer:
+            application-id: sink-core-group-experiments
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
   main.allow-bean-definition-overriding: true
 logging:
   level:
     root: INFO
-    org.apache.kafka.streams.KafkaStreams: DEBUG
-    com.makeandship.mykrobe: DEBUG
+    org.apache.kafka.streams.KafkaStreams: INFO
+    com.makeandship.mykrobe: INFO
