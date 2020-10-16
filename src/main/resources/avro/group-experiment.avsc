@@ -1,0 +1,15 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "GroupExperiment",
+  "fields": [
+    {
+      "type": "string",
+      "name": "groupId"
+    },
+    {
+      "type": "string",
+      "name": "experimentId"
+    }
+  ]
+}
