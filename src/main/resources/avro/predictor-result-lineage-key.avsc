@@ -1,0 +1,15 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "PredictorResultLineageKey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "experimentId"
+    },
+    {
+      "type": "int",
+      "name": "index"
+    }
+  ]
+}

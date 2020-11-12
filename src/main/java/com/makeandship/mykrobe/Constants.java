@@ -10,6 +10,7 @@ public class Constants {
 	public static final String SOURCE_PREDICTOR_RESULT_FILE = "source_predictor_result_file";
 	public static final String SOURCE_GROUPS = "source_groups";
 	public static final String SOURCE_GROUP_EXPERIMENTS = "source_group_experiments";
+	public static final String SOURCE_PREDICTOR_RESULT_LINEAGE = "source_predictor_result_lineage";
 
 	// sinks
 	public static final String SINK_CORE_EXPERIMENTS = "sink_core_experiments";
@@ -19,6 +20,7 @@ public class Constants {
 	public static final String SINK_CORE_PREDICTOR_RESULT_FILE = "sink_core_predictor_result_file";
 	public static final String SINK_CORE_GROUPS = "sink_core_groups";
 	public static final String SINK_CORE_GROUP_EXPERIMENTS = "sink_core_group_experiments";
+	public static final String SINK_CORE_PREDICTOR_RESULT_LINEAGE = "sink_core_predictor_result_lineage";
 
 	// stores
 	public static final String STORE_CORE_EXPERIMENT = "core-experiment-store";
@@ -27,6 +29,7 @@ public class Constants {
 	public static final String STORE_CORE_PREDICTOR_RESULT_FILE = "core-predictor-result-file-store";
 	public static final String STORE_CORE_GROUP = "core-group-store";
 	public static final String STORE_CORE_GROUP_EXPERIMENT = "core-group-experiment-store";
+	public static final String STORE_CORE_PREDICTOR_RESULT_LINEAGE = "core-predictor-result-lineage-store";
 
 	// schema registry
 	public static final String SCHEMA_REGISTRY_URL = System.getenv("SCHEMA_REGISTRY_URL");

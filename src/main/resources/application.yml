@@ -40,6 +40,9 @@ spring:
       source_group_experiments:
         destination: mykrobe.atlas.groups
         content-type: application/json
+      source_predictor_result_lineage:
+        destination: mykrobe.atlas.experiments
+        content-type: application/json
       sink_core_experiments:
         producer:
           useNativeEncoding: true
@@ -74,6 +77,11 @@ spring:
         producer:
           useNativeEncoding: true
         destination: core_group_experiments
+        content-type: application/*+avro
+      sink_core_predictor_result_lineage:
+        producer:
+          useNativeEncoding: true
+        destination: core_predictor_result_lineage
         content-type: application/*+avro
     kafka.streams:
       binder:
@@ -112,6 +120,11 @@ spring:
         source_group_experiments:
           consumer:
             application-id: source-group-experiments
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_predictor_result_lineage:
+          consumer:
+            application-id: source-predictor-result-lineage
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.springframework.kafka.support.serializer.JsonSerde
         sink_core_experiments:
@@ -165,6 +178,14 @@ spring:
         sink_core_group_experiments:
           producer:
             application-id: sink-core-group-experiments
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_predictor_result_lineage:
+          producer:
+            application-id: sink-core-predictor-result-lineage
             configuration:
               key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
               value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
