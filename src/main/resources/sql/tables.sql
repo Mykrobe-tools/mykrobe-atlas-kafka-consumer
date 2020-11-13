@@ -127,3 +127,12 @@ CREATE TABLE `core_group_experiments` (
   PRIMARY KEY (`groupId`, `experimentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_group_experiments_group_id ON core_group_experiments(groupId);
+
+DROP TABLE IF EXISTS `core_predictor_result_lineage`;
+CREATE TABLE `core_predictor_result_lineage` (
+  `experimentId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `index` bigint(20) NOT NULL,
+  `lineage` varchar(200) COLLATE utf8mb4_unicode_ci  DEFAULT '',
+  PRIMARY KEY (`experimentId`, `index`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_predictor_result_lineage_experiment ON core_predictor_result_lineage(experimentId);
