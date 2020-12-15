@@ -194,6 +194,6 @@ spring:
   main.allow-bean-definition-overriding: true
 logging:
   level:
-    root: INFO
-    org.apache.kafka.streams.KafkaStreams: INFO
-    com.makeandship.mykrobe: INFO
+    root: DEBUG
+    org.apache.kafka.streams.KafkaStreams: DEBUG
+    com.makeandship.mykrobe: DEBUG
