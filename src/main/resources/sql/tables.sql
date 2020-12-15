@@ -108,3 +108,31 @@ CREATE TABLE `core_tree_distance_result` (
   PRIMARY KEY (`experimentId`, `received`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_tree_distance_result_experiment ON core_tree_distance_result(experimentId);
+
+DROP TABLE IF EXISTS `core_groups`;
+CREATE TABLE `core_groups` (
+  `id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `annotation` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `searchId` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `deleted` bigint(20) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_groups_deleted ON core_groups(deleted);
+
+DROP TABLE IF EXISTS `core_group_experiments`;
+CREATE TABLE `core_group_experiments` (
+  `groupId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experimentId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`groupId`, `experimentId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_group_experiments_group_id ON core_group_experiments(groupId);
+
+DROP TABLE IF EXISTS `core_predictor_result_lineage`;
+CREATE TABLE `core_predictor_result_lineage` (
+  `experimentId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `index` bigint(20) NOT NULL,
+  `lineage` varchar(200) COLLATE utf8mb4_unicode_ci  DEFAULT '',
+  PRIMARY KEY (`experimentId`, `index`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_predictor_result_lineage_experiment ON core_predictor_result_lineage(experimentId);

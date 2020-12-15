@@ -1,0 +1,27 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "Group",
+  "fields": [
+    {
+      "type": "string",
+      "name": "id"
+    },
+    {
+      "type": "string",
+      "name": "name"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "annotation"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "searchId"
+    },
+    {
+      "type": [ "int", "null" ],
+      "name": "deleted"
+    }
+  ]
+}

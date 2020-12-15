@@ -106,9 +106,6 @@ SELECT
   r.species AS species,
   r.speciesPercentCoverage AS species_percent_coverage,
   r.speciesMedianDepth AS species_median_depth,
-  r.lineage AS lineage,
-  r.lineagePercentCoverage AS lineage_percent_coverage,
-  r.lineageMedianDepth AS lineage_median_depth,
   r.r,
   r.mdr,
   r.xdr,
@@ -149,4 +146,47 @@ FROM
   core_predictor_result r 
 WHERE
   r.experimentId = e.id 
+  AND deleted IS NULL;
+DROP VIEW IF EXISTS experiment_predictor_result_lineages;
+CREATE VIEW experiment_predictor_result_lineages AS 
+SELECT
+  e.id,
+  e.file,
+  e.created,
+  e.modified,
+  e.patientId AS patient_id,
+  e.patientSiteId AS patient_site_id,
+  e.patientGenderAtBirth AS patient_gender_at_birth,
+  e.patientCountryOfBirth AS patient_country_of_birth,
+  e.patientAge AS patient_age,
+  e.patientBmi AS patient_bmi,
+  e.patientInjectingDrugUse AS patient_injecting_drug_use,
+  e.patientHomeless AS patient_homeless,
+  e.patientImprisoned AS patient_imprisoned,
+  e.patientSmoker AS patient_smoker,
+  e.patientDiabetic AS patient_diabetic,
+  e.patientHivStatus AS patient_hiv_status,
+  e.patientArt AS patient_art,
+  e.sampleLabId AS sample_lab_id,
+  e.sampleIsolateId AS sample_isolate_id,
+  e.sampleCollectionDate AS sample_collection_date,
+  e.sampleDateArrived AS sample_date_arrived,
+  e.sampleProspectiveIsolate AS sample_prospective_isolate,
+  e.sampleCountryIsolate AS sample_country_isolate,
+  e.sampleCityIsolate AS sample_city_isolate,
+  e.sampleLongitudeIsolate AS sample_longitude,
+  e.sampleLatitudeIsolate AS sample_latitude,
+  e.sampleAnatomicalOrigin AS sample_anatomical_origin,
+  e.sampleSmear AS sample_smear,
+  e.outcomeSputumSmearConversion AS outcome_sputum_smear_conversion,
+  e.outcomeSputumCultureConversion AS outcome_sputum_culture_conversion,
+  e.outcomeWhoOutcomeCategory AS outcome_who_category_outcome,
+  e.outcomeDateOfDeath AS outcome_date_of_death,
+  rl.index AS lineage_index,
+  rl.lineage AS lineage
+FROM
+  core_experiments e,
+  core_predictor_result_lineage rl 
+WHERE
+  rl.experimentId = e.id 
   AND deleted IS NULL;
