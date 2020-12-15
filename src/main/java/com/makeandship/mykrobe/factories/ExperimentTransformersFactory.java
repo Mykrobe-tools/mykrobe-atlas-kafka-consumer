@@ -17,11 +17,12 @@ public class ExperimentTransformersFactory {
 	public static final String CREATE = "c";
 	public static final String UPDATE = "u";
 	public static final String DELETE = "d";
-	
+
 	public static ExperimentTransformer create(KeyValueStore<ExperimentKey, Experiment> stateStore,
 			DebeziumExperimentPayload payload) {
 		switch (payload.getOp()) {
 		case "c":
+		case "r":
 			log.debug("Using CreateExperimentTransformer");
 			return new CreateExperimentTransformer(stateStore, payload);
 		case "u":

@@ -21,6 +21,7 @@ public class GroupTransformersFactory {
 	public static GroupTransformer create(KeyValueStore<GroupKey, Group> stateStore, DebeziumGroupPayload payload) {
 		switch (payload.getOp()) {
 		case "c":
+		case "r":
 			log.debug("Using CreateGroupTransformer");
 			return new CreateGroupTransformer(stateStore, payload);
 		case "u":
