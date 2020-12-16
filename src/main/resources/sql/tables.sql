@@ -163,8 +163,8 @@ CREATE TABLE `core_searches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_searches_deleted ON core_searches(deleted);
 
-DROP TABLE IF EXISTS `core_search_result`;
-CREATE TABLE `core_search_result` (
+DROP TABLE IF EXISTS `core_search_results`;
+CREATE TABLE `core_search_results` (
   `searchId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `resultSampleId` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `received` datetime,
