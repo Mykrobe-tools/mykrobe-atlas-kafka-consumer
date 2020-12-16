@@ -200,7 +200,7 @@ SELECT
   s.bigsiSeq AS bigsi_seq,       
   s.bigsiThreshold AS bigsi_threshold, 
   s.bigsiRef AS bigsi_ref,      
-  s.bigsiAlt AS bigsi_qlt,     
+  s.bigsiAlt AS bigsi_alt,     
   s.bigsiPos AS bigsi_pos,       
   s.bigsiGene AS bigsi_gene,     
   s.status,         
@@ -301,3 +301,10 @@ WHERE
   AND ge.experimentId = e.id
   AND g.deleted IS NULL
   AND e.deleted IS NULL;
+
+DROP VIEW IF EXISTS searches;
+CREATE VIEW searches AS 
+SELECT * 
+FROM
+  core_searches s
+WHERE s.deleted IS NULL;
