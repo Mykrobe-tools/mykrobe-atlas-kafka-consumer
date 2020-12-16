@@ -100,7 +100,7 @@ spring:
       sink_core_search_results:
         producer:
           useNativeEncoding: true
-        destination: core_search_experiments
+        destination: core_search_results
         content-type: application/*+avro
       sink_core_predictor_result_lineage:
         producer:
