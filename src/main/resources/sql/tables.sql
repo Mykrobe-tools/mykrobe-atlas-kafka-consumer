@@ -114,7 +114,6 @@ CREATE TABLE `core_groups` (
   `id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `annotation` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `searchId` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `deleted` bigint(20) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -128,6 +127,14 @@ CREATE TABLE `core_group_experiments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_group_experiments_group_id ON core_group_experiments(groupId);
 
+DROP TABLE IF EXISTS `core_group_searches`;
+CREATE TABLE `core_group_searches` (
+  `groupId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `searchId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`groupId`, `searchId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_group_searches_group_id ON core_group_searches(groupId);
+
 DROP TABLE IF EXISTS `core_predictor_result_lineage`;
 CREATE TABLE `core_predictor_result_lineage` (
   `experimentId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,3 +143,36 @@ CREATE TABLE `core_predictor_result_lineage` (
   PRIMARY KEY (`experimentId`, `index`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_predictor_result_lineage_experiment ON core_predictor_result_lineage(experimentId);
+
+DROP TABLE IF EXISTS `core_searches`;
+CREATE TABLE `core_searches` (
+  `id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `bigsiSeq` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `bigsiThreshold` DECIMAL(10, 8),
+  `bigsiRef` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `bigsiAlt` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `bigsiPos` bigint(20) DEFAULT 0,
+  `bigsiGene` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `status` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `expires` datetime,
+  `created` datetime,
+  `modified` datetime,
+  `deleted` bigint(20) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_searches_deleted ON core_searches(deleted);
+
+DROP TABLE IF EXISTS `core_search_results`;
+CREATE TABLE `core_search_results` (
+  `searchId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resultSampleId` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `received` datetime,
+  `reference` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `completedBigsiQueries` bigint(20) DEFAULT 0,
+  `totalBigsiQueries` bigint(20) DEFAULT 0,
+  `resultGenotype` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  PRIMARY KEY (`searchId`, `resultSampleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE INDEX core_search_result_searchId ON core_search_result(searchId);
+CREATE INDEX core_search_result_sampleId ON core_search_result(resultSampleId);
