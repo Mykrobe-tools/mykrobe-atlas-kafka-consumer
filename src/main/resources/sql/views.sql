@@ -147,6 +147,7 @@ FROM
 WHERE
   r.experimentId = e.id 
   AND deleted IS NULL;
+
 DROP VIEW IF EXISTS experiment_predictor_result_lineages;
 CREATE VIEW experiment_predictor_result_lineages AS 
 SELECT
@@ -191,6 +192,7 @@ WHERE
   rl.experimentId = e.id 
   AND deleted IS NULL;
 
+DROP VIEW IF EXISTS search_experiments;
 CREATE VIEW search_experiments AS 
 SELECT
   s.id,        
@@ -252,6 +254,7 @@ WHERE
   AND s.deleted IS NULL
   AND e.deleted IS NULL;
 
+DROP VIEW IF EXISTS group_experiments;
 CREATE VIEW group_experiments AS 
 SELECT
   g.id AS group_id,        
