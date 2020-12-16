@@ -1,0 +1,59 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "Search",
+  "fields": [
+    {
+      "type": "string",
+      "name": "id"
+    },
+    {
+      "type": "string",
+      "name": "type"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "bigsiSeq"
+    },
+    {
+      "type": ["double", "null" ],
+      "name": "bigsiThreshold"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "bigsiRef"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "bigsiAlt"
+    },
+    {
+      "type": ["int", "null" ],
+      "name": "bigsiPos"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "bigsiGene"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "status"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "expires"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "created"
+    },
+    {
+      "type": ["string", "null" ],
+      "name": "modified"
+    },
+    {
+      "type": [ "int", "null" ],
+      "name": "deleted"
+    }
+  ]
+}

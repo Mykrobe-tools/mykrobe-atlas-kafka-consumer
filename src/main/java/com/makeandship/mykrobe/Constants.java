@@ -11,6 +11,9 @@ public class Constants {
 	public static final String SOURCE_GROUPS = "source_groups";
 	public static final String SOURCE_GROUP_EXPERIMENTS = "source_group_experiments";
 	public static final String SOURCE_PREDICTOR_RESULT_LINEAGE = "source_predictor_result_lineage";
+	public static final String SOURCE_GROUP_SEARCHES = "source_group_searches";
+	public static final String SOURCE_SEARCHES = "source_searches";
+	public static final String SOURCE_SEARCH_RESULTS = "source_search_results";
 
 	// sinks
 	public static final String SINK_CORE_EXPERIMENTS = "sink_core_experiments";
@@ -21,6 +24,9 @@ public class Constants {
 	public static final String SINK_CORE_GROUPS = "sink_core_groups";
 	public static final String SINK_CORE_GROUP_EXPERIMENTS = "sink_core_group_experiments";
 	public static final String SINK_CORE_PREDICTOR_RESULT_LINEAGE = "sink_core_predictor_result_lineage";
+	public static final String SINK_CORE_SEARCHES = "sink_core_searches";
+	public static final String SINK_CORE_GROUP_SEARCHES = "sink_core_group_searches";
+	public static final String SINK_CORE_SEARCH_RESULTS = "sink_core_search_results";
 
 	// stores
 	public static final String STORE_CORE_EXPERIMENT = "core-experiment-store";
@@ -30,6 +36,8 @@ public class Constants {
 	public static final String STORE_CORE_GROUP = "core-group-store";
 	public static final String STORE_CORE_GROUP_EXPERIMENT = "core-group-experiment-store";
 	public static final String STORE_CORE_PREDICTOR_RESULT_LINEAGE = "core-predictor-result-lineage-store";
+	public static final String STORE_CORE_SEARCH = "core-search-store";
+	public static final String STORE_CORE_GROUP_SEARCH = "core-group-search-store";
 
 	// schema registry
 	public static final String SCHEMA_REGISTRY_URL = System.getenv("SCHEMA_REGISTRY_URL");

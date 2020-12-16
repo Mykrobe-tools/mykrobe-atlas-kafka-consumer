@@ -16,10 +16,6 @@
       "name": "annotation"
     },
     {
-      "type": ["string", "null" ],
-      "name": "searchId"
-    },
-    {
       "type": [ "int", "null" ],
       "name": "deleted"
     }
