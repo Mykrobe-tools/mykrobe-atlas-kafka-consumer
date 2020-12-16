@@ -1,0 +1,15 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "GroupSearchKey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "groupId"
+    },
+    {
+      "type": "string",
+      "name": "searchId"
+    }
+  ]
+}

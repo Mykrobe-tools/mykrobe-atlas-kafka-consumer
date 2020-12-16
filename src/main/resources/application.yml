@@ -37,8 +37,17 @@ spring:
       source_groups:
         destination: mykrobe.atlas.groups
         content-type: application/json
+      source_searches:
+        destination: mykrobe.atlas.searches
+        content-type: application/json
       source_group_experiments:
         destination: mykrobe.atlas.groups
+        content-type: application/json
+      source_group_searches:
+        destination: mykrobe.atlas.groups
+        content-type: application/json
+      source_search_results:
+        destination: mykrobe.atlas.searches
         content-type: application/json
       source_predictor_result_lineage:
         destination: mykrobe.atlas.experiments
@@ -73,10 +82,25 @@ spring:
           useNativeEncoding: true
         destination: core_groups
         content-type: application/*+avro
+      sink_core_searches:
+        producer:
+          useNativeEncoding: true
+        destination: core_searches
+        content-type: application/*+avro
       sink_core_group_experiments:
         producer:
           useNativeEncoding: true
         destination: core_group_experiments
+        content-type: application/*+avro
+      sink_core_group_searches:
+        producer:
+          useNativeEncoding: true
+        destination: core_group_searches
+        content-type: application/*+avro
+      sink_core_search_results:
+        producer:
+          useNativeEncoding: true
+        destination: core_search_experiments
         content-type: application/*+avro
       sink_core_predictor_result_lineage:
         producer:
@@ -117,9 +141,24 @@ spring:
             application-id: source-groups
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_searches:
+          consumer:
+            application-id: source-searches
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
         source_group_experiments:
           consumer:
             application-id: source-group-experiments
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_group_searches:
+          consumer:
+            application-id: source-group-searches
+            keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+        source_search_results:
+          consumer:
+            application-id: source-search-results
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.springframework.kafka.support.serializer.JsonSerde
         source_predictor_result_lineage:
@@ -175,9 +214,33 @@ spring:
               value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
             keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
             valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_searches:
+          producer:
+            application-id: sink-core-searches
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
         sink_core_group_experiments:
           producer:
             application-id: sink-core-group-experiments
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_group_searches:
+          producer:
+            application-id: sink-core-group-searches
+            configuration:
+              key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+              value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+            keySerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+            valueSerde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        sink_core_search_results:
+          producer:
+            application-id: sink-core-search-results
             configuration:
               key.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
               value.serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer

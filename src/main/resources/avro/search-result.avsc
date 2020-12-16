@@ -1,0 +1,35 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "SearchResult",
+  "fields": [
+    {
+      "type": "string",
+      "name": "searchId"
+    },
+    {
+      "type": "string",
+      "name": "resultSampleId"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "received"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "reference"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "completedBigsiQueries"
+    },
+    {
+      "type": ["int", "null"],
+      "name": "totalBigsiQueries"
+    },
+    {
+      "type": ["string", "null"],
+      "name": "resultGenotype"
+    }
+  ]
+}

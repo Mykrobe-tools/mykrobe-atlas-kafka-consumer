@@ -13,8 +13,8 @@ public class MongoGroup {
 	private String name;
 	@JsonProperty("annotation")
 	private String annotation;
-	@JsonProperty("search")
-	private MongoId search;
+	@JsonProperty("searches")
+	private List<MongoId> searches;
 	@JsonProperty("experiments")
 	private List<MongoId> experiments;
 
@@ -42,12 +42,12 @@ public class MongoGroup {
 		this.annotation = annotation;
 	}
 
-	public MongoId getSearch() {
-		return search;
+	public List<MongoId> getSearches() {
+		return searches;
 	}
 
-	public void setSearch(MongoId search) {
-		this.search = search;
+	public void setSearches(List<MongoId> searches) {
+		this.searches = searches;
 	}
 
 	public List<MongoId> getExperiments() {

@@ -25,7 +25,6 @@ public abstract class GroupTransformer {
 		group.setId(id);
 		group.setName(mongoGroup.getName());
 		group.setAnnotation(mongoGroup.getAnnotation());
-		group.setSearchId(mongoGroup.getSearch().getOid());
 
 		log.debug(GroupTransformer.class.getName() + "#buildExperiment: exit");
 	}

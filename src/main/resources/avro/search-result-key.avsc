@@ -1,0 +1,15 @@
+{
+  "namespace": "com.makeandship.mykrobe.models",
+  "type": "record",
+  "name": "SearchResultKey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "searchId"
+    },
+    {
+      "type": "string",
+      "name": "resultSampleId"
+    }
+  ]
+}
