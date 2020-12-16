@@ -147,6 +147,7 @@ FROM
 WHERE
   r.experimentId = e.id 
   AND deleted IS NULL;
+
 DROP VIEW IF EXISTS experiment_predictor_result_lineages;
 CREATE VIEW experiment_predictor_result_lineages AS 
 SELECT
@@ -190,3 +191,113 @@ FROM
 WHERE
   rl.experimentId = e.id 
   AND deleted IS NULL;
+
+DROP VIEW IF EXISTS search_experiments;
+CREATE VIEW search_experiments AS 
+SELECT
+  s.id,        
+  s.type,          
+  s.bigsiSeq AS bigsi_seq,       
+  s.bigsiThreshold AS bigsi_threshold, 
+  s.bigsiRef AS bigsi_ref,      
+  s.bigsiAlt AS bigsi_qlt,     
+  s.bigsiPos AS bigsi_pos,       
+  s.bigsiGene AS bigsi_gene,     
+  s.status,         
+  s.expires,        
+  s.created,        
+  s.modified,
+  sr.resultSampleId AS result_sample_id,   
+  sr.received AS result_received,           
+  sr.reference  AS result_reference,            
+  sr.completedBigsiQueries AS completed_bigsi_queries,  
+  sr.totalBigsiQueries AS total_bigsi_queries,       
+  sr.resultGenotype AS result_genotype,
+  e.file,
+  e.created AS experiment_created,
+  e.modified AS experiment_modified,
+  e.patientId AS patient_id,
+  e.patientSiteId AS patient_site_id,
+  e.patientGenderAtBirth AS patient_gender_at_birth,
+  e.patientCountryOfBirth AS patient_country_of_birth,
+  e.patientAge AS patient_age,
+  e.patientBmi AS patient_bmi,
+  e.patientInjectingDrugUse AS patient_injecting_drug_use,
+  e.patientHomeless AS patient_homeless,
+  e.patientImprisoned AS patient_imprisoned,
+  e.patientSmoker AS patient_smoker,
+  e.patientDiabetic AS patient_diabetic,
+  e.patientHivStatus AS patient_hiv_status,
+  e.patientArt AS patient_art,
+  e.sampleLabId AS sample_lab_id,
+  e.sampleIsolateId AS sample_isolate_id,
+  e.sampleCollectionDate AS sample_collection_date,
+  e.sampleDateArrived AS sample_date_arrived,
+  e.sampleProspectiveIsolate AS sample_prospective_isolate,
+  e.sampleCountryIsolate AS sample_country_isolate,
+  e.sampleCityIsolate AS sample_city_isolate,
+  e.sampleLongitudeIsolate AS sample_longitude,
+  e.sampleLatitudeIsolate AS sample_latitude,
+  e.sampleAnatomicalOrigin AS sample_anatomical_origin,
+  e.sampleSmear AS sample_smear,
+  e.outcomeSputumSmearConversion AS outcome_sputum_smear_conversion,
+  e.outcomeSputumCultureConversion AS outcome_sputum_culture_conversion,
+  e.outcomeWhoOutcomeCategory AS outcome_who_category_outcome,
+  e.outcomeDateOfDeath AS outcome_date_of_death 
+FROM
+  core_searches s,
+  core_search_results sr,
+  core_experiments e
+WHERE
+  sr.searchId = s.id
+  AND e.sampleIsolateId = sr.resultSampleId
+  AND s.deleted IS NULL
+  AND e.deleted IS NULL;
+
+DROP VIEW IF EXISTS group_experiments;
+CREATE VIEW group_experiments AS 
+SELECT
+  g.id AS group_id,        
+  g.name,          
+  g.annotation, 
+  e.id AS experiment_id,      
+  e.file,
+  e.created,
+  e.modified,
+  e.patientId AS patient_id,
+  e.patientSiteId AS patient_site_id,
+  e.patientGenderAtBirth AS patient_gender_at_birth,
+  e.patientCountryOfBirth AS patient_country_of_birth,
+  e.patientAge AS patient_age,
+  e.patientBmi AS patient_bmi,
+  e.patientInjectingDrugUse AS patient_injecting_drug_use,
+  e.patientHomeless AS patient_homeless,
+  e.patientImprisoned AS patient_imprisoned,
+  e.patientSmoker AS patient_smoker,
+  e.patientDiabetic AS patient_diabetic,
+  e.patientHivStatus AS patient_hiv_status,
+  e.patientArt AS patient_art,
+  e.sampleLabId AS sample_lab_id,
+  e.sampleIsolateId AS sample_isolate_id,
+  e.sampleCollectionDate AS sample_collection_date,
+  e.sampleDateArrived AS sample_date_arrived,
+  e.sampleProspectiveIsolate AS sample_prospective_isolate,
+  e.sampleCountryIsolate AS sample_country_isolate,
+  e.sampleCityIsolate AS sample_city_isolate,
+  e.sampleLongitudeIsolate AS sample_longitude,
+  e.sampleLatitudeIsolate AS sample_latitude,
+  e.sampleAnatomicalOrigin AS sample_anatomical_origin,
+  e.sampleSmear AS sample_smear,
+  e.outcomeSputumSmearConversion AS outcome_sputum_smear_conversion,
+  e.outcomeSputumCultureConversion AS outcome_sputum_culture_conversion,
+  e.outcomeWhoOutcomeCategory AS outcome_who_category_outcome,
+  e.outcomeDateOfDeath AS outcome_date_of_death 
+FROM
+  core_groups g,
+  core_group_experiments ge,
+  core_experiments e
+WHERE
+  ge.groupId = g.id
+  AND ge.experimentId = e.id
+  AND g.deleted IS NULL
+  AND e.deleted IS NULL;

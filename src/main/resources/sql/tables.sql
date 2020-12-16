@@ -37,6 +37,7 @@ CREATE TABLE `core_experiments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_experiments_created ON core_experiments(created);
 CREATE INDEX core_experiments_modified ON core_experiments(modified);
+CREATE INDEX core_experiments_sample_isolate_id ON core_experiments(sampleIsolateId);
 CREATE INDEX core_experiments_deleted ON core_experiments(deleted);
 
 DROP TABLE IF EXISTS `core_nearest_neighbour_result`;
