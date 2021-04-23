@@ -164,8 +164,8 @@ CREATE TABLE `core_searches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE INDEX core_searches_deleted ON core_searches(deleted);
 
-DROP TABLE IF EXISTS `core_search_result`;
-CREATE TABLE `core_search_result` (
+DROP TABLE IF EXISTS `core_search_results`;
+CREATE TABLE `core_search_results` (
   `searchId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `resultSampleId` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `received` datetime,
@@ -175,5 +175,5 @@ CREATE TABLE `core_search_result` (
   `resultGenotype` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`searchId`, `resultSampleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-CREATE INDEX core_search_result_searchId ON core_search_result(searchId);
-CREATE INDEX core_search_result_sampleId ON core_search_result(resultSampleId);
+CREATE INDEX core_search_results_searchId ON core_search_results(searchId);
+CREATE INDEX core_search_results_sampleId ON core_search_results(resultSampleId);
